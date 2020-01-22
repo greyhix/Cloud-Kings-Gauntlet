@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Player Frames/0.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Player Frames/1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Player Frames/2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player Frames/3.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Player Frames/4.png" type="Texture" id=5]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=6]
+[ext_resource path="res://Animations/jump.tres" type="Animation" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": false,
+"name": "jump",
+"speed": 20.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "cirrus_modulate_effect"
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0.460938, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[node name="Player" type="AnimatedSprite"]
+frames = SubResource( 1 )
+animation = "jump"
+script = ExtResource( 6 )
+
+[node name="CirrusEffectAnimations" type="AnimationPlayer" parent="."]
+anims/cirrus_modulate_effect = SubResource( 2 )
+
+[node name="PlayerAnimations" type="AnimationPlayer" parent="."]
+playback_speed = 2.25
+anims/idle = SubResource( 3 )
+anims/jump = ExtResource( 7 )
+
+[node name="PlayerBody" type="KinematicBody2D" parent="."]
+
+[node name="PlayerCollision" type="CollisionPolygon2D" parent="PlayerBody"]
+visible = false
+polygon = PoolVector2Array( -15.9419, -5.8701, -16.029, 0.749958, -7.81204, 5.94728, 7.9832, 6.00536, 16.026, -0.0339966, 16.055, -5.95721 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 100, 0 )
+zoom = Vector2( 3, 3 )
+limit_left = -70
+limit_top = 0
+limit_bottom = 100
+limit_smoothed = true
+smoothing_enabled = true
+smoothing_speed = 10.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

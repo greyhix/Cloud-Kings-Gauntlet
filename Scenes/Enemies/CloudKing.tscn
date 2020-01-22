@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Enemies/Cloud King/Cloud King.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Enemies/CloudKing.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "cloud_king_animation"
+length = 3.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -90, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="CloudKing" type="Sprite"]
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="CloudKingAnimator" type="AnimationPlayer" parent="."]
+playback_speed = 2.0
+anims/cloud_king_animation = SubResource( 1 )
+
+[node name="queue_free_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="queue_free_timer" to="." method="_on_queue_free_timer_timeout"]

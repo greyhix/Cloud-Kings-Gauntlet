@@ -1,0 +1,130 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/GUI/EnemiesHelp.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Background/Background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Enemies/Nimbus/Nimbus.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Enemies/Fog/Fog.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Enemies/Cirrus/Cirrus.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Enemies/Cloud King/Cloud King.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Fonts/PixelFont/PixelFont.tres" type="DynamicFont" id=7]
+[ext_resource path="res://Assets/Styles/Button_Styles/Hover_Button_Style.stylebox" type="StyleBox" id=8]
+[ext_resource path="res://Assets/Styles/Button_Styles/Normal_Button_Style.stylebox" type="StyleBox" id=9]
+
+[node name="EnemyHelp" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 119.276, 69.1006 )
+texture = ExtResource( 2 )
+
+[node name="NimbusRect" type="TextureRect" parent="."]
+margin_left = 10.0249
+margin_top = 20.4001
+margin_right = 28.0249
+margin_bottom = 28.4001
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="FogRect" type="TextureRect" parent="."]
+margin_left = 11.2015
+margin_top = 41.1527
+margin_right = 43.2015
+margin_bottom = 59.1527
+texture = ExtResource( 4 )
+
+[node name="CirrusRect" type="TextureRect" parent="."]
+margin_left = 8.4718
+margin_top = 63.8028
+margin_right = 296.472
+margin_bottom = 79.8028
+rect_scale = Vector2( 0.14, 0.5 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 1
+
+[node name="CloudKingRect" type="TextureRect" parent="."]
+margin_left = 9.77761
+margin_top = 80.3503
+margin_right = 131.778
+margin_bottom = 142.35
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+
+[node name="Enemies" type="Label" parent="."]
+margin_left = 97.4743
+margin_top = 3.55432
+margin_right = 157.474
+margin_bottom = 21.5543
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = ExtResource( 7 )
+text = "Enemies"
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Enemies"]
+margin_left = -56.4856
+margin_top = 21.8248
+margin_right = 404.514
+margin_bottom = 210.825
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Nimbus" type="Label" parent="Enemies/VBoxContainer"]
+margin_right = 461.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 7 )
+text = "The most commonm adversary in the gauntlet 
+will shoot a singular lightning bolt that will eliminate you
+"
+
+[node name="Fog" type="Label" parent="Enemies/VBoxContainer"]
+margin_top = 64.0
+margin_right = 461.0
+margin_bottom = 103.0
+custom_fonts/font = ExtResource( 7 )
+text = "This unassuming threat will lessen your vision for a short duration
+"
+
+[node name="Cirrus" type="Label" parent="Enemies/VBoxContainer"]
+margin_top = 107.0
+margin_right = 461.0
+margin_bottom = 146.0
+custom_fonts/font = ExtResource( 7 )
+text = "This frosty foe will freeze and make you fall for a short duration
+"
+
+[node name="CloudKing" type="Label" parent="Enemies/VBoxContainer"]
+margin_top = 150.0
+margin_right = 461.0
+margin_bottom = 189.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "The King of the Realm will summon a random amount 
+of lightning bolts to eliminate you"
+
+[node name="BugReporting" type="Label" parent="."]
+margin_left = 19.4015
+margin_top = 106.872
+margin_right = 376.402
+margin_bottom = 145.872
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 7 )
+text = "Something not working? Let me know at
+infinitejuke.itch.io/the-cloud-kings-gauntlet"
+align = 1
+
+[node name="Back" type="Button" parent="."]
+margin_left = 185.043
+margin_top = 2.48532
+margin_right = 229.043
+margin_bottom = 20.4853
+custom_styles/hover = ExtResource( 8 )
+custom_styles/pressed = ExtResource( 8 )
+custom_styles/focus = ExtResource( 8 )
+custom_styles/normal = ExtResource( 9 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_disabled = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = " Back "
+
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

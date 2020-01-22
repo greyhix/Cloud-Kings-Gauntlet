@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/GUI/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Background/Background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Fonts/PixelFont/PixelFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Assets/Styles/Button_Styles/Hover_Button_Style.stylebox" type="StyleBox" id=4]
+[ext_resource path="res://Assets/Styles/Button_Styles/Normal_Button_Style.stylebox" type="StyleBox" id=5]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 117.793, 70.8868 )
+texture = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 38.7928
+margin_top = 21.6938
+margin_right = 218.793
+margin_bottom = 109.694
+
+[node name="DistanceTraveled" type="Label" parent="VBoxContainer"]
+margin_right = 180.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 3 )
+text = "Distance Traveled"
+align = 1
+
+[node name="CoinsCollected" type="Label" parent="VBoxContainer"]
+margin_top = 22.0
+margin_right = 180.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.956863, 0.976471, 0.384314, 1 )
+text = "Coins Collected"
+align = 1
+
+[node name="MainMenu" type="Button" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 180.0
+margin_bottom = 64.0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Main Menu"
+
+[node name="PlayAgain" type="Button" parent="VBoxContainer"]
+margin_top = 68.0
+margin_right = 180.0
+margin_bottom = 88.0
+custom_styles/hover = ExtResource( 4 )
+custom_styles/pressed = ExtResource( 4 )
+custom_styles/focus = ExtResource( 4 )
+custom_styles/normal = ExtResource( 5 )
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Play Again"
+
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayAgain" to="." method="_on_PlayAgain_pressed"]

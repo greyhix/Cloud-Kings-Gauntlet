@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assets/Enemies/Fog/Fog.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Enemies/Fog.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Enemies/Fog/FogEffect.png" type="Texture" id=3]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Fog" type="AnimatedSprite"]
+frames = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+editor/display_folded = true
+collision_layer = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+visible = false
+polygon = PoolVector2Array( -10.2395, -5.07672, -6.11643, -7.16729, 5.78819, -7.31247, 10.1435, -4.90251, 9.96932, 4.73733, 5.23651, 7.06018, -4.28719, 7.14729, -10.0943, 4.59215 )
+
+[node name="fog_effect_timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="fog_effect" type="Sprite" parent="."]
+visible = false
+z_index = 5
+texture = ExtResource( 3 )
+offset = Vector2( -5, 0 )
+
+[node name="fog_queue_timer" type="Timer" parent="."]
+wait_time = 8.0
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="fog_effect_timer" to="." method="_on_fog_effect_timer_timeout"]
+[connection signal="timeout" from="fog_queue_timer" to="." method="_on_fog_queue_timer_timeout"]

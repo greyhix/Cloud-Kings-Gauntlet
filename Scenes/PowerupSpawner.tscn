@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/PowerupSpawner.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Pickups/Disabled_Defenses_Icon.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Pickups/Double_Coins_Powerup.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Pickups/Bottled_Tempest_Icon.png" type="Texture" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 7.32834
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8.74392, 4.64566 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "BottledTempestPickup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("BottledTempest:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1e-005, 1e-005 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "DisabledDefensesPickup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("DisabledDefenses:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 1e-005, 1e-005 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "DoubleCoinsPickup"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("DoubleCoins:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-005, 1e-005 ) ]
+}
+
+[node name="PowerupSpawner" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="DisabledDefenses" type="Sprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="DisabledDefenses"]
+collision_layer = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DisabledDefenses/Area2D"]
+shape = SubResource( 1 )
+
+[node name="DoubleCoins" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="DoubleCoins"]
+collision_layer = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoubleCoins/Area2D"]
+position = Vector2( -0.450418, -0.453064 )
+shape = SubResource( 2 )
+
+[node name="BottledTempest" type="Sprite" parent="."]
+scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="BottledTempest"]
+collision_layer = 4096
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="BottledTempest/Area2D"]
+polygon = PoolVector2Array( -5.12826, 0.80577, -6.2603, 5.15898, -2.07302, 7.90975, 1.80862, 8.00144, 6.36268, 4.91446, 5.53714, 1.04161, 4.22689, -1.89334, 1.38073, -7.8919, -1.70625, -7.86133, -4.08006, -2.12918 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/BottledTempestPickup = SubResource( 3 )
+anims/DisabledDefensesPickup = SubResource( 4 )
+anims/DoubleCoinsPickup = SubResource( 5 )
+
+[connection signal="body_entered" from="DisabledDefenses/Area2D" to="." method="on_player_entered_disabled_defense"]
+[connection signal="body_entered" from="DoubleCoins/Area2D" to="." method="on_player_entered_double_coins"]
+[connection signal="body_entered" from="BottledTempest/Area2D" to="." method="on_player_entered_bottled_tempest"]

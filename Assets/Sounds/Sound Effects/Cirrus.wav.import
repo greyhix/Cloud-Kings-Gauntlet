@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Cirrus.wav-2e4cab8053039ed4eb92ab21363f9017.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/Sound Effects/Cirrus.wav"
+dest_files=[ "res://.import/Cirrus.wav-2e4cab8053039ed4eb92ab21363f9017.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

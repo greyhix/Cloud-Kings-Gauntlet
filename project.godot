@@ -1,0 +1,86 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="Cloud King's Gauntlet"
+run/main_scene="res://Scenes/Level.tscn"
+boot_splash/image="res://Assets/SplashScreen/splashscreen.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
+config/icon="res://Assets/GodotIcon/GodotIcon.ico"
+
+[autoload]
+
+PlayerConfig="*res://Scenes/PlayerConfig.tscn"
+Player="*res://Scenes/Player.tscn"
+GUI="*res://Scenes/GUI/GUI.tscn"
+AudioMaster="*res://Scenes/AudioMaster.tscn"
+GameMaster="*res://Scenes/GameMaster.tscn"
+
+[debug]
+
+settings/profiler/max_functions=16400
+settings/fps/force_fps=300
+gdscript/warnings/unused_argument=false
+
+[display]
+
+window/size/width=250
+window/size/height=140
+window/size/resizable=false
+window/size/test_width=1920
+window/size/test_height=1080
+window/vsync/use_vsync=false
+window/energy_saving/keep_screen_on=false
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+window/stretch/shrink="1"
+window/image=true
+
+[global]
+
+pixel=false
+
+[input]
+
+space={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+, Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_render/layer_1="Player"
+2d_render/layer_2="Coin"
+2d_render/layer_3="Lightning_Bolt"
+2d_render/layer_4="Cirrus"
+2d_render/layer_5="Fog"
+2d_render/layer_6="Disabled_Defense"
+2d_render/layer_7="Double_Coin"
+2d_render/layer_8="Bottled_Tempest"
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
+quality/2d/use_pixel_snap=true
+vram_compression/import_etc=true

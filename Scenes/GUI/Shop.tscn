@@ -1,0 +1,188 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/Shop.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Background/Background.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Styles/Button_Styles/Hover_Button_Style.stylebox" type="StyleBox" id=3]
+[ext_resource path="res://Assets/Styles/Button_Styles/Normal_Button_Style.stylebox" type="StyleBox" id=4]
+[ext_resource path="res://Assets/Fonts/PixelFont/PixelFont.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Assets/Fonts/PixelFJVerdana12pt.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Assets/Pickups/Coin Frames/0.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Styles/Button_Styles/Disabled_Button_Style.stylebox" type="StyleBox" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 6 )
+
+[node name="Shop" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="BG" type="Sprite" parent="."]
+position = Vector2( 121.521, 68.1172 )
+texture = ExtResource( 2 )
+
+[node name="MainMenu" type="Button" parent="."]
+margin_left = 75.9466
+margin_top = 114.016
+margin_right = 160.947
+margin_bottom = 134.016
+rect_scale = Vector2( 1.2, 1.2 )
+rect_pivot_offset = Vector2( 20, 0 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = " Main Menu "
+
+[node name="Coins" type="Label" parent="."]
+margin_left = 15.5475
+margin_top = 3.01907
+margin_right = 264.547
+margin_bottom = 63.0191
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.913725, 0.909804, 0.592157, 1 )
+text = "$0,000
+
+"
+
+[node name="coin_sprite" type="TextureRect" parent="."]
+visible = false
+margin_left = 34.3257
+margin_top = 4.5763
+margin_right = 45.3257
+margin_bottom = 15.5763
+rect_scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 7 )
+stretch_mode = 3
+
+[node name="PermanentUpgradePrices" type="VBoxContainer" parent="."]
+margin_left = 8.98788
+margin_top = 32.7712
+margin_right = 66.9879
+margin_bottom = 153.771
+rect_scale = Vector2( 0.6, 0.6 )
+
+[node name="WeakenedNimbusPrice" type="Label" parent="PermanentUpgradePrices"]
+margin_right = 58.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 2 )
+text = "$5,000
+"
+align = 2
+
+[node name="SolidCloudsPrice" type="Label" parent="PermanentUpgradePrices"]
+margin_top = 43.0
+margin_right = 58.0
+margin_bottom = 82.0
+custom_fonts/font = SubResource( 2 )
+text = "$8,000
+"
+align = 2
+
+[node name="GuardianWinsgPrice" type="Label" parent="PermanentUpgradePrices"]
+margin_top = 86.0
+margin_right = 58.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 2 )
+text = "$12,000"
+align = 2
+
+[node name="ShopTitle" type="Label" parent="."]
+margin_left = 95.4225
+margin_top = 10.9625
+margin_right = 165.422
+margin_bottom = 28.9625
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.635294, 0.345098, 0.345098, 1 )
+text = "Upgrades"
+
+[node name="Upgrades" type="VBoxContainer" parent="."]
+margin_left = 48.9291
+margin_top = 31.5453
+margin_right = 321.929
+margin_bottom = 159.545
+rect_scale = Vector2( 0.6, 0.6 )
+
+[node name="WeakenedNimbus" type="Button" parent="Upgrades"]
+margin_right = 273.0
+margin_bottom = 20.0
+rect_pivot_offset = Vector2( 20, 0 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = " Weakened Nimbus"
+
+[node name="WeakenedNimbusExplanation" type="Label" parent="Upgrades"]
+margin_top = 24.0
+margin_right = 273.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 5 )
+text = "All Lightning Bolts Fly Slower"
+
+[node name="SolidClouds" type="Button" parent="Upgrades"]
+margin_top = 46.0
+margin_right = 273.0
+margin_bottom = 66.0
+rect_pivot_offset = Vector2( 20, 0 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = " Solid Clouds"
+
+[node name="SolidCloudsExplanation" type="Label" parent="Upgrades"]
+margin_top = 70.0
+margin_right = 273.0
+margin_bottom = 88.0
+custom_fonts/font = ExtResource( 5 )
+text = "You can no longer fall to your death"
+
+[node name="GuardianTempest" type="Button" parent="Upgrades"]
+margin_top = 92.0
+margin_right = 273.0
+margin_bottom = 112.0
+rect_pivot_offset = Vector2( 20, 0 )
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 8 )
+custom_styles/normal = ExtResource( 4 )
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+text = "Guardian Tempest"
+
+[node name="GuardianTempestExplanation" type="Label" parent="Upgrades"]
+margin_top = 116.0
+margin_right = 273.0
+margin_bottom = 134.0
+custom_fonts/font = ExtResource( 5 )
+text = "Start with a bottled tempest every run"
+
+[connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]
+[connection signal="pressed" from="Upgrades/WeakenedNimbus" to="." method="_on_WeakenedNimbus_pressed"]
+[connection signal="pressed" from="Upgrades/SolidClouds" to="." method="_on_SolidClouds_pressed"]
+[connection signal="pressed" from="Upgrades/GuardianTempest" to="." method="_on_GuardianWings_pressed"]
